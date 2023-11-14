@@ -5,9 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 				xmlns:view ="clr-namespace:ChicagoTrainTracker.View"
         mc:Ignorable="d"
-        Title="MainWindow" Height="800" Width="500">
+        Title="MainWindow" Height="800" Width="1000">
     <Grid>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition />
+			<ColumnDefinition />
+		</Grid.ColumnDefinitions>
 		<view:MapView Height="600"
-									Width="400"/>
+									Width="400"
+									Grid.Column="0"/>
 	</Grid>
 </Window>
