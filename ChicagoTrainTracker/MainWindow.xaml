@@ -14,5 +14,7 @@
 		<view:MapView Height="600"
 									Width="400"
 									Grid.Column="0"/>
+
+		<view:StationView Grid.Column="1" />
 	</Grid>
 </Window>
