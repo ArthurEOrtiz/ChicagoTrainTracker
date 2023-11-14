@@ -3,10 +3,11 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:ChicagoTrainTracker"
+				xmlns:view ="clr-namespace:ChicagoTrainTracker.View"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="800" Width="500">
     <Grid>
-        
-    </Grid>
+		<view:MapView Height="600"
+									Width="400"/>
+	</Grid>
 </Window>

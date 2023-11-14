@@ -1,0 +1,30 @@
+﻿<UserControl x:Class="ChicagoTrainTracker.View.MapView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ChicagoTrainTracker.View"
+						 xmlns:viewModel="clr-namespace:ChicagoTrainTracker.ViewModel"
+						 xmlns:m="clr-namespace:Microsoft.Maps.MapControl.WPF;assembly=Microsoft.Maps.MapControl.WPF"
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="400">
+	<UserControl.DataContext>
+		<viewModel:MapViewModel />
+	</UserControl.DataContext>
+
+	<Grid>
+		<m:Map x:Name="myMap"
+				   Center="41.881832,-87.8" 
+				   ZoomLevel="10" 
+				   Mode="Road">
+			<m:MapItemsControl ItemsSource="{Binding Pushpins}">
+				<m:MapItemsControl.ItemTemplate>
+					<DataTemplate>
+						<m:Pushpin Location="{Binding Location}" />
+					</DataTemplate>
+				</m:MapItemsControl.ItemTemplate>
+			</m:MapItemsControl>
+		</m:Map>
+
+	</Grid>
+</UserControl>
