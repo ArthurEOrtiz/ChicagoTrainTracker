@@ -13,8 +13,6 @@ namespace ChicagoTrainTracker.View
 		public MapView()
 		{
 			InitializeComponent();
-
-			myMap.CredentialsProvider = new ApplicationIdCredentialsProvider(new MapViewModel().BingMapsApiKey);
 		}
 	}
 }

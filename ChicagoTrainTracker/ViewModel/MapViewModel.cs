@@ -19,13 +19,12 @@ namespace ChicagoTrainTracker.ViewModel
 			}
 		}
 
-		public string BingMapsApiKey { get; }
-
+		
+		public ApplicationIdCredentialsProvider BingMapsApiKey { get; }
 
 		public MapViewModel()
 		{
-			BingMapsApiKey = ConfigurationManager.AppSettings["BingMapsApiKey"];
-			
+			BingMapsApiKey = new ApplicationIdCredentialsProvider( ConfigurationManager.AppSettings["BingMapsApiKey"]);
 
 			Pushpins = new ObservableCollection<Pushpin>();
 			AddPushPin(new Location(41.857908, -87.669147));
