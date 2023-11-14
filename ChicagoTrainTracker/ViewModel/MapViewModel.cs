@@ -18,7 +18,6 @@ namespace ChicagoTrainTracker.ViewModel
 				OnPropertyChanged(nameof(Pushpins));
 			}
 		}
-
 		
 		public ApplicationIdCredentialsProvider BingMapsApiKey { get; }
 
