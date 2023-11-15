@@ -1,5 +1,7 @@
 ﻿using ChicagoTrainTracker.Commands;
 using System;
+using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace ChicagoTrainTracker.ViewModel
 {
@@ -23,11 +25,24 @@ namespace ChicagoTrainTracker.ViewModel
 			ChangeStationNameCommand = new RelayCommand(ChangeStationName);
 		}
 
-		private void ChangeStationName(object parameter)
+		private async void ChangeStationName(object parameter)
 		{
 			if (parameter is StationViewModel newStation)
 			{
 				Station = newStation;
+				await LoadStationEtasAsync(Station.MapId);
+			}
+		}
+
+		private async Task LoadStationEtasAsync(int mapId)
+		{
+			string ctaApiKey = System.Configuration.ConfigurationManager.AppSettings["CtaApiKey"];
+
+			using (var httpClient = new HttpClient())
+			{
+				string apiUrl = $"http://lapi.transitchicago.com/api/1.0/ttarrivals.aspx?key{ctaApiKey}&mapid={Station.MapId}";
+				var response = await httpClient.GetAsync(apiUrl);
+
 			}
 		}
 	}
