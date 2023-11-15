@@ -13,18 +13,13 @@
 	</UserControl.DataContext>
 
 	<Grid>
+		
 		<m:Map x:Name="myMap"
 					 CredentialsProvider="{Binding BingMapsApiKey}"
 				   Center="41.881832,-87.8" 
 				   ZoomLevel="10" 
 				   Mode="Road">
-			<m:MapItemsControl ItemsSource="{Binding Pushpins}">
-				<m:MapItemsControl.ItemTemplate>
-					<DataTemplate>
-						<m:Pushpin Location="{Binding Location}" />
-					</DataTemplate>
-				</m:MapItemsControl.ItemTemplate>
-			</m:MapItemsControl>
+			<m:MapItemsControl ItemsSource="{Binding Pushpins}"/>
 		</m:Map>
 
 	</Grid>
