@@ -7,11 +7,10 @@
 						 xmlns:viewModel="clr-namespace:ChicagoTrainTracker.ViewModel"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-	<UserControl.DataContext>
-		<viewModel:StationViewViewModel />
-	</UserControl.DataContext>
+
     <Grid>
-		<TextBlock Text="{Binding StationName}" 
+	
+		<TextBlock Text="{Binding StationViewViewModel.StationName}" 
 							 FontSize="24"
 							 VerticalAlignment="Center"
 							 HorizontalAlignment="Center"/>

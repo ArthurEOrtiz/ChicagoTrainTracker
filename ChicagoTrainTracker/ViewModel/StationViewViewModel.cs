@@ -1,4 +1,7 @@
-﻿namespace ChicagoTrainTracker.ViewModel
+﻿using ChicagoTrainTracker.Commands;
+using System;
+
+namespace ChicagoTrainTracker.ViewModel
 {
 	public class StationViewViewModel : ViewModelBase
 	{
@@ -14,7 +17,19 @@
 			}
 		}
 
-		public StationViewViewModel() { }
+		public RelayCommand ChangeStationNameCommand { get; private set; }
 
+		public StationViewViewModel()
+		{
+			ChangeStationNameCommand = new RelayCommand(ChangeStationName);
+		}
+
+		private void ChangeStationName(object parameter)
+		{
+			if (parameter is string newStationName)
+			{
+				StationName = newStationName;
+			}
+		}
 	}
 }

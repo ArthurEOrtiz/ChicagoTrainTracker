@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Net.Http;
+using System.Windows;
 using System.Windows.Media;
 using System.Xml;
 using BingLocation = Microsoft.Maps.MapControl.WPF.Location;
@@ -155,6 +156,12 @@ namespace ChicagoTrainTracker.ViewModel
 			{
 				pushpin.Background = new SolidColorBrush(Colors.White);
 			}
+
+			pushpin.MouseLeftButtonDown += (sender, e) =>
+			{
+				MainWindowViewModel mainWindowViewModel = (MainWindowViewModel)Application.Current.MainWindow.DataContext;
+				mainWindowViewModel.StationViewViewModel.ChangeStationNameCommand.Execute(stationName);
+			};
 
 			Pushpins.Add(pushpin);
 		}
