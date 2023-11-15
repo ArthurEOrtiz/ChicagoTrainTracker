@@ -26,9 +26,9 @@ namespace ChicagoTrainTracker.ViewModel
 
 		private void ChangeStationName(object parameter)
 		{
-			if (parameter is string newStationName)
+			if (parameter is StationViewModel newStation)
 			{
-				StationName = newStationName;
+				StationName = newStation.StationName;
 			}
 		}
 	}
