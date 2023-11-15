@@ -5,15 +5,14 @@ namespace ChicagoTrainTracker.ViewModel
 {
 	public class StationViewViewModel : ViewModelBase
 	{
-		private string _stationName = "Hello World!";
-
-		public string StationName
+		private StationViewModel _station;
+		public StationViewModel Station
 		{
-			get => _stationName;
+			get => _station;
 			set
 			{
-				_stationName = value;
-				OnPropertyChanged(nameof(StationName));
+				_station = value;
+				OnPropertyChanged(nameof(Station));
 			}
 		}
 
@@ -28,7 +27,7 @@ namespace ChicagoTrainTracker.ViewModel
 		{
 			if (parameter is StationViewModel newStation)
 			{
-				StationName = newStation.StationName;
+				Station = newStation;
 			}
 		}
 	}

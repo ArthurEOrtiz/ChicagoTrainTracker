@@ -10,7 +10,7 @@
 
     <Grid>
 	
-		<TextBlock Text="{Binding StationViewViewModel.StationName}" 
+		<TextBlock Text="{Binding StationViewViewModel.Station.StationName}" 
 							 FontSize="24"
 							 VerticalAlignment="Center"
 							 HorizontalAlignment="Center"/>
