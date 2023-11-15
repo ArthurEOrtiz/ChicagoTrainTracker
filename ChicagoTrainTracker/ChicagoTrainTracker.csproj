@@ -84,6 +84,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Commands\RelayCommand.cs" />
     <Compile Include="Model\Location.cs" />
     <Compile Include="Model\Station.cs" />
     <Compile Include="Model\Stop.cs" />
