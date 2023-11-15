@@ -114,9 +114,7 @@ namespace ChicagoTrainTracker.ViewModel
 				var location = new BingLocation(lat, lng);
 
 				AddPushPin(location, station.StationName, colors);
-
 			}
-
 		}
 
 		private List<Color> GetStationColors(List<StopViewModel> stations)
@@ -130,7 +128,6 @@ namespace ChicagoTrainTracker.ViewModel
 
 			return colors;
 		}
-
 
 		private Location ParseLocation(XmlNode xmlNode)
 		{
