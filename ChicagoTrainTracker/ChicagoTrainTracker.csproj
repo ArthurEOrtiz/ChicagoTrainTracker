@@ -90,6 +90,7 @@
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
     <Compile Include="ViewModel\MapViewModel.cs" />
     <Compile Include="ViewModel\StationViewModel.cs" />
+    <Compile Include="ViewModel\StationViewViewModel.cs" />
     <Compile Include="ViewModel\StopViewModel.cs" />
     <Compile Include="ViewModel\ViewModelBase.cs" />
     <Compile Include="View\MapView.xaml.cs">
