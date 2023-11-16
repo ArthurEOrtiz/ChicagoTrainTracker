@@ -5,16 +5,44 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 				xmlns:view ="clr-namespace:ChicagoTrainTracker.View"
         mc:Ignorable="d"
-        Title="MainWindow" Height="800" Width="1000">
-    <Grid>
-		<Grid.ColumnDefinitions>
-			<ColumnDefinition />
-			<ColumnDefinition />
-		</Grid.ColumnDefinitions>
-		<view:MapView Height="600"
-									Width="400"
-									Grid.Column="0"/>
+        Title="MainWindow" 
+				Height="800" 
+				Width="1000">
+	<Border CornerRadius="12"
+					BorderThickness="1"
+					Background="#00a1de">
+		<Grid>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition />
+				<ColumnDefinition />
+			</Grid.ColumnDefinitions>
 
-		<view:StationView Grid.Column="1" />
-	</Grid>
+			<Grid.RowDefinitions>
+				<RowDefinition Height="Auto" />
+				<RowDefinition Height="*" />
+			</Grid.RowDefinitions>
+
+
+			<TextBlock Text="Chicago Train Tracker" 
+						 FontSize="32"
+						 Grid.Column="0"
+						 Grid.Row="0"
+						 Grid.ColumnSpan="2"
+						 HorizontalAlignment="Center"
+						 VerticalAlignment="Center"
+						 />
+
+			<view:MapView Grid.Column="0"
+								    Grid.Row="1"
+								    ClipToBounds="True"
+										Padding="5"/>
+
+			<view:StationView Grid.Column="1"
+												Grid.Row="1"
+												Padding="5"/>
+
+		</Grid>
+	
+	</Border>
+	
 </Window>

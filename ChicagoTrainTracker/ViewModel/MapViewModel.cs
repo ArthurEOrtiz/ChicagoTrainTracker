@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Net.Http;
+using System.Windows;
 using System.Windows.Media;
 using System.Xml;
 using BingLocation = Microsoft.Maps.MapControl.WPF.Location;
@@ -106,17 +107,8 @@ namespace ChicagoTrainTracker.ViewModel
 
 			foreach (var station in _stations)
 			{
-				double lat = station.Location.Latitude;
-				double lng = station.Location.Longitude;
-
-				List<Color> colors = station.StationColors.ToList();
-
-				var location = new BingLocation(lat, lng);
-
-				AddPushPin(location, station.StationName, colors);
-
+				AddPushPin(station);
 			}
-
 		}
 
 		private List<Color> GetStationColors(List<StopViewModel> stations)
@@ -131,7 +123,6 @@ namespace ChicagoTrainTracker.ViewModel
 			return colors;
 		}
 
-
 		private Location ParseLocation(XmlNode xmlNode)
 		{
 			Location location = new Location
@@ -143,11 +134,17 @@ namespace ChicagoTrainTracker.ViewModel
 			return location;
 		}
 
-		private void AddPushPin(BingLocation location, string stationName, List<Color> colors)
+		private void AddPushPin(StationViewModel station)
 		{
+			double lat = station.Location.Latitude;
+			double lng = station.Location.Longitude;
+			var location = new BingLocation(lat, lng);
+
+			List<Color> colors = station.StationColors.ToList();
+
 			Pushpin pushpin = new Pushpin();
 			pushpin.Location = location;
-			pushpin.ToolTip = stationName;
+			pushpin.ToolTip = station.StationName;
 			
 			
 			if(colors.Count > 0 && colors.All(c => c == colors[0]))
@@ -158,6 +155,12 @@ namespace ChicagoTrainTracker.ViewModel
 			{
 				pushpin.Background = new SolidColorBrush(Colors.White);
 			}
+
+			pushpin.MouseLeftButtonDown += (sender, e) =>
+			{
+				MainWindowViewModel mainWindowViewModel = (MainWindowViewModel)Application.Current.MainWindow.DataContext;
+				mainWindowViewModel.StationViewViewModel.ChangeStationNameCommand.Execute(station);
+			};
 
 			Pushpins.Add(pushpin);
 		}

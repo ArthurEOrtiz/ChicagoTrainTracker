@@ -7,14 +7,30 @@
 						 xmlns:viewModel="clr-namespace:ChicagoTrainTracker.ViewModel"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-	<UserControl.DataContext>
-		<viewModel:StationViewViewModel />
-	</UserControl.DataContext>
-    <Grid>
-		<TextBlock Text="{Binding StationName}" 
+
+  <StackPanel>
+	
+		<TextBlock Text="{Binding StationViewViewModel.Station.StationName}" 
 							 FontSize="24"
 							 VerticalAlignment="Center"
 							 HorizontalAlignment="Center"/>
+		<ListView ItemsSource="{Binding StationViewViewModel.ETAData}"
+							HorizontalAlignment="Center"
+							Margin="0,10,0,0">
+			<ListView.View>
+				<GridView>
+					<!-- Define columns here -->
+					<!--<GridViewColumn Header="Line" DisplayMemberBinding="{Binding Route, Converter={StaticResource RouteAbbreviationToColorConverter}}" Width="Auto"/>-->
+					<GridViewColumn Header="Route Number" DisplayMemberBinding="{Binding RouteNumber}" Width="Auto"/>
+					<GridViewColumn Header="Stop Description"  DisplayMemberBinding="{Binding StopDescription}" Width="Auto" />
+					<GridViewColumn Header="Destination" DisplayMemberBinding="{Binding DestinationName}" Width="Auto"/>
+					<GridViewColumn Header="ArrivalTime" DisplayMemberBinding="{Binding ArrivalTime, StringFormat='hh:mm tt'}" Width="Auto"/>
+					<!--<GridViewColumn Header="Is Approaching" DisplayMemberBinding="{Binding IsApproaching, Converter={StaticResource BooleanConveter}}" />
+					<GridViewColumn Header="Is Delayed" DisplayMemberBinding="{Binding IsDelayed, Converter={StaticResource BooleanConveter}}" />-->
+					<!-- Add more columns as needed -->
+				</GridView>
+			</ListView.View>
+		</ListView>
 
-	</Grid>
+	</StackPanel>
 </UserControl>

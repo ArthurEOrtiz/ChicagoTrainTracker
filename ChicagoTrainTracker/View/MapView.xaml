@@ -7,20 +7,20 @@
 						 xmlns:viewModel="clr-namespace:ChicagoTrainTracker.ViewModel"
 						 xmlns:m="clr-namespace:Microsoft.Maps.MapControl.WPF;assembly=Microsoft.Maps.MapControl.WPF"
              mc:Ignorable="d" 
-             d:DesignHeight="600" d:DesignWidth="400">
+             Background="Transparent"
+						 >
 	<UserControl.DataContext>
 		<viewModel:MapViewModel />
 	</UserControl.DataContext>
 
 	<Grid>
-		
-		<m:Map x:Name="myMap"
-					 CredentialsProvider="{Binding BingMapsApiKey}"
-				   Center="41.881832,-87.8" 
-				   ZoomLevel="10" 
-				   Mode="Road">
-			<m:MapItemsControl ItemsSource="{Binding Pushpins}"/>
-		</m:Map>
 
+			<m:Map x:Name="myMap"
+				 CredentialsProvider="{Binding BingMapsApiKey}"
+			   Center="41.913,-87.75" 
+				 ZoomLevel="10.6" 
+			   Mode="Road">
+				<m:MapItemsControl ItemsSource="{Binding Pushpins}"/>
+			</m:Map>
 	</Grid>
 </UserControl>

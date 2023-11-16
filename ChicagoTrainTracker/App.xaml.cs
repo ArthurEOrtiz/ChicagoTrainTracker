@@ -10,9 +10,14 @@ namespace ChicagoTrainTracker
 	{
 		protected override void OnStartup(StartupEventArgs e)
 		{
+			var stationViewViewModel = new StationViewViewModel();
+			var mapViewModel = new MapViewModel();
+
+			var mainWindowViewModel = new MainWindowViewModel(stationViewViewModel, mapViewModel);
+
 			MainWindow = new MainWindow()
 			{
-				DataContext = new MainWindowViewModel()
+				DataContext = mainWindowViewModel
 			};
 
 			MainWindow.Show();
