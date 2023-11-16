@@ -85,9 +85,11 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Commands\RelayCommand.cs" />
+    <Compile Include="Model\Eta.cs" />
     <Compile Include="Model\Location.cs" />
     <Compile Include="Model\Station.cs" />
     <Compile Include="Model\Stop.cs" />
+    <Compile Include="ViewModel\EtaViewModel.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
     <Compile Include="ViewModel\MapViewModel.cs" />
     <Compile Include="ViewModel\StationViewModel.cs" />
