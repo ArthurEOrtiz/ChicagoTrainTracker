@@ -13,19 +13,14 @@
 		<viewModel:MapViewModel />
 	</UserControl.DataContext>
 
-	<Border CornerRadius="10"
-					BorderBrush="Black"
-					BorderThickness="1"
-					Padding="3"
-					Background="Transparent">
+	<Grid>
 
 			<m:Map x:Name="myMap"
 				 CredentialsProvider="{Binding BingMapsApiKey}"
 			   Center="41.913,-87.75" 
 				 ZoomLevel="10.6" 
-			   Mode="Road"
-				 ClipToBounds="True">
+			   Mode="Road">
 				<m:MapItemsControl ItemsSource="{Binding Pushpins}"/>
 			</m:Map>
-	</Border>
+	</Grid>
 </UserControl>
