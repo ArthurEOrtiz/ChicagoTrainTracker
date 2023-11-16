@@ -107,13 +107,6 @@ namespace ChicagoTrainTracker.ViewModel
 
 			foreach (var station in _stations)
 			{
-				//double lat = station.Location.Latitude;
-				//double lng = station.Location.Longitude;
-
-				//List<Color> colors = station.StationColors.ToList();
-
-				//var location = new BingLocation(lat, lng);
-
 				AddPushPin(station);
 			}
 		}

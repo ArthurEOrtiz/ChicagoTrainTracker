@@ -9,8 +9,8 @@ namespace ChicagoTrainTracker.ViewModel
 
 		public MainWindowViewModel(StationViewViewModel stationViewModel, MapViewModel mapViewModel)
 		{
-			StationViewViewModel = stationViewModel ?? throw new ArgumentNullException(nameof(stationViewModel));
-			MapViewModel = mapViewModel ?? throw new ArgumentNullException(nameof(mapViewModel));
+			StationViewViewModel = stationViewModel;
+			MapViewModel = mapViewModel;
 		}
 	}
 }
