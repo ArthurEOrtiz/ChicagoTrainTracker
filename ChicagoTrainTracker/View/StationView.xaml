@@ -15,7 +15,8 @@
 							 VerticalAlignment="Center"
 							 HorizontalAlignment="Center"/>
 		<ListView ItemsSource="{Binding StationViewViewModel.ETAData}"
-							HorizontalAlignment="Center">
+							HorizontalAlignment="Center"
+							Margin="0,10,0,0">
 			<ListView.View>
 				<GridView>
 					<!-- Define columns here -->
