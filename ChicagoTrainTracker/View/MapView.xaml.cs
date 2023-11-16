@@ -1,6 +1,4 @@
-﻿using ChicagoTrainTracker.ViewModel;
-using Microsoft.Maps.MapControl.WPF;
-using System.Windows.Controls;
+﻿using System.Windows.Controls;
 
 
 namespace ChicagoTrainTracker.View
@@ -13,6 +11,11 @@ namespace ChicagoTrainTracker.View
 		public MapView()
 		{
 			InitializeComponent();
+		}
+
+		private void myMap_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+		{
+			e.Handled = true;
 		}
 	}
 }
