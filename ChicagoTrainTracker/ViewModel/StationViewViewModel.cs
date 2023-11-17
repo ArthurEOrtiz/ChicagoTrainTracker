@@ -6,6 +6,7 @@ using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Net.Http;
 using System.Threading.Tasks;
+using System.Windows.Media;
 using System.Xml;
 
 namespace ChicagoTrainTracker.ViewModel
@@ -32,6 +33,20 @@ namespace ChicagoTrainTracker.ViewModel
 		{
 			ChangeStationNameCommand = new RelayCommand(ChangeStationName);
 			_eTAData = new ObservableCollection<EtaViewModel>();
+			LoadInitialStation();
+		}
+
+		private async void LoadInitialStation()
+		{
+			var station = new Station
+			{
+				MapId = 40830,
+				StationName = "18th",
+			};
+
+			Station = new StationViewModel(station);
+
+			await LoadStationEtasAsync(station.MapId);
 		}
 
 		private async void ChangeStationName(object parameter)
@@ -49,7 +64,7 @@ namespace ChicagoTrainTracker.ViewModel
 
 			using (var httpClient = new HttpClient())
 			{
-				string apiUrl = $"http://lapi.transitchicago.com/api/1.0/ttarrivals.aspx?key={ctaApiKey}&mapid={Station.MapId}";
+				string apiUrl = $"http://lapi.transitchicago.com/api/1.0/ttarrivals.aspx?key={ctaApiKey}&mapid={mapId}";
 				var response = await httpClient.GetStringAsync(apiUrl);
 
 				ParserApiResponse(response);
