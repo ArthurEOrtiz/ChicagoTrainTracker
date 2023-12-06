@@ -5,31 +5,139 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ChicagoTrainTracker.View"
 						 xmlns:viewModel="clr-namespace:ChicagoTrainTracker.ViewModel"
+						 xmlns:converters ="clr-namespace:ChicagoTrainTracker.Converters"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+	<UserControl.Resources>
+		<converters:RouteAbbreviationToColorConverter x:Key="RouteAbbreviationToColorConverter" />
+		
+		<ControlTemplate x:Key="ListViewTemplate" TargetType="{x:Type ListView}">
+			<Grid>
+				<Grid.RowDefinitions>
+				<RowDefinition Height="Auto"/>
+				<RowDefinition Height="*"/>
+			</Grid.RowDefinitions>
+				
+			<!--Header--> 
+				
+			<Border Background="Transparent"
+							BorderBrush="White"
+							BorderThickness="0,0,0,1"
+							Margin="0,0,0,7"
+							Width="450">
+
+					<GridViewHeaderRowPresenter Columns="{Binding Path=View.Columns, RelativeSource={RelativeSource AncestorType={x:Type ListView}}}"
+																		  Margin="0" 
+																		  SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" >
+						
+						<GridViewHeaderRowPresenter.ColumnHeaderContainerStyle>
+							
+							<Style TargetType="{x:Type GridViewColumnHeader}">
+								<Setter Property="Background" Value="Transparent" />
+								<Setter Property="Foreground" Value="White" />
+								<Setter Property="VerticalAlignment" Value="Center" />
+								<Setter Property="HorizontalAlignment" Value="Center" />
+								<Setter Property="Margin" Value="20,0,0,0" />
+								<Setter Property="FontSize" Value="16" />
+								<Setter Property="Template">
+									<Setter.Value>
+										<ControlTemplate TargetType="{x:Type GridViewColumnHeader}">
+												<TextBlock Text="{TemplateBinding Content}"
+										               HorizontalAlignment="Stretch" />
+										</ControlTemplate>
+									</Setter.Value>
+								</Setter>
+							</Style>
+							
+						</GridViewHeaderRowPresenter.ColumnHeaderContainerStyle>
+						
+					</GridViewHeaderRowPresenter>
+
+				</Border>
+
+				 <!--Content-->
+				<Border Grid.Row="1"
+					      Background="White"
+								CornerRadius="2"
+								Padding="5"
+								>
+					<ScrollViewer VerticalScrollBarVisibility="Auto">
+						<ItemsPresenter  />
+					</ScrollViewer>
+					
+				</Border>
+			</Grid>
+		</ControlTemplate>
+	</UserControl.Resources>
 
   <StackPanel>
 	
 		<TextBlock Text="{Binding StationViewViewModel.Station.StationName}" 
 							 FontSize="24"
+							 Foreground="White"
 							 VerticalAlignment="Center"
 							 HorizontalAlignment="Center"/>
-		<ListView ItemsSource="{Binding StationViewViewModel.ETAData}"
+		<ListView Template="{StaticResource ListViewTemplate}" ItemsSource="{Binding StationViewViewModel.ETAData}"
 							HorizontalAlignment="Center"
-							Margin="0,10,0,0">
+							Margin="0,10,0,0" 
+							FontSize="16"
+							Height="300"
+							Width="450"
+							>
+
 			<ListView.View>
 				<GridView>
-					<!-- Define columns here -->
 					<!--<GridViewColumn Header="Line" DisplayMemberBinding="{Binding Route, Converter={StaticResource RouteAbbreviationToColorConverter}}" Width="Auto"/>-->
-					<GridViewColumn Header="Route Number" DisplayMemberBinding="{Binding RouteNumber}" Width="Auto"/>
-					<GridViewColumn Header="Stop Description"  DisplayMemberBinding="{Binding StopDescription}" Width="Auto" />
-					<GridViewColumn Header="Destination" DisplayMemberBinding="{Binding DestinationName}" Width="Auto"/>
-					<GridViewColumn Header="ArrivalTime" DisplayMemberBinding="{Binding ArrivalTime, StringFormat='hh:mm tt'}" Width="Auto"/>
+					<GridViewColumn Header="Route #" DisplayMemberBinding="{Binding RouteNumber}" Width="100"  />
+
+					<!--<GridViewColumn Header="Stop Description"  DisplayMemberBinding="{Binding StopDescription}" Width="Auto" />-->
+					<GridViewColumn Header="Destination" DisplayMemberBinding="{Binding DestinationName}" Width="200"/>
+					<GridViewColumn Header="ArrivalTime" DisplayMemberBinding="{Binding ArrivalTime, StringFormat='hh:mm tt'}" Width="100"/>
 					<!--<GridViewColumn Header="Is Approaching" DisplayMemberBinding="{Binding IsApproaching, Converter={StaticResource BooleanConveter}}" />
 					<GridViewColumn Header="Is Delayed" DisplayMemberBinding="{Binding IsDelayed, Converter={StaticResource BooleanConveter}}" />-->
-					<!-- Add more columns as needed -->
 				</GridView>
 			</ListView.View>
+			<ListView.ItemContainerStyle>
+				<Style TargetType="ListViewItem">
+					<Style.Triggers>
+						<DataTrigger Binding="{Binding Route}" Value="Red">
+							<Setter Property="Background" Value="#c60c30" />
+							<Setter Property="Foreground" Value="White" />
+						</DataTrigger>
+						<DataTrigger Binding="{Binding Route}" Value="Blue">
+							<Setter Property="Background" Value="#00a1de" />
+							<Setter Property="Foreground" Value="White" />
+						</DataTrigger>
+						<DataTrigger Binding="{Binding Route}" Value="Brn">
+							<Setter Property="Background" Value="#62361b" />
+							<Setter Property="Foreground" Value="White" />
+						</DataTrigger>
+						<DataTrigger Binding="{Binding Route}" Value="G">
+							<Setter Property="Background" Value="#009b3a" />
+							<Setter Property="Foreground" Value="White" />
+						</DataTrigger>
+						<DataTrigger Binding="{Binding Route}" Value="Org">
+							<Setter Property="Background" Value="#f9461c" />
+							<Setter Property="Foreground" Value="White" />
+						</DataTrigger>
+						<DataTrigger Binding="{Binding Route}" Value="P">
+							<Setter Property="Background" Value="#522398" />
+							<Setter Property="Foreground" Value="White" />
+						</DataTrigger>
+						<DataTrigger Binding="{Binding Route}" Value="Pink">
+							<Setter Property="Background" Value="#e27ea6" />
+							<Setter Property="Foreground" Value="White" />
+						</DataTrigger>
+						<DataTrigger Binding="{Binding Route}" Value="Y">
+							<Setter Property="Background" Value="#f9e300" />
+							<Setter Property="Foreground" Value="black" />
+						</DataTrigger>
+					</Style.Triggers>
+					<Setter Property="HorizontalContentAlignment" Value="Center" />
+				</Style>
+			</ListView.ItemContainerStyle>
+				
+
 		</ListView>
 
 	</StackPanel>

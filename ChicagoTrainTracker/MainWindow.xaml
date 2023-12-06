@@ -7,42 +7,129 @@
         mc:Ignorable="d"
         Title="MainWindow" 
 				Height="800" 
-				Width="1000">
-	<Border CornerRadius="12"
-					BorderThickness="1"
-					Background="#00a1de">
-		<Grid>
-			<Grid.ColumnDefinitions>
-				<ColumnDefinition />
-				<ColumnDefinition />
-			</Grid.ColumnDefinitions>
+				Width="1000"
+				WindowStyle="None"
+				ResizeMode="NoResize"
+				WindowStartupLocation="CenterScreen"
+				Background="Transparent"
+				AllowsTransparency="True"
+				MouseDown="Window_MouseDown">
+	<Border CornerRadius="14"
+					Background="#00a1de"
+					>
+		<Border CornerRadius="10"
+						BorderThickness="4"
+						BorderBrush="White">
+			<Grid>
+				<Grid.RowDefinitions>
+					<RowDefinition Height="50" />
+					<RowDefinition />
+				</Grid.RowDefinitions>
+				<Grid>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition />
+						<ColumnDefinition Width="25" />
+						<ColumnDefinition Width="25" />
+						<ColumnDefinition Width="5" />
+						<!--this is for margin-->
+					</Grid.ColumnDefinitions>
 
-			<Grid.RowDefinitions>
-				<RowDefinition Height="Auto" />
-				<RowDefinition Height="*" />
-			</Grid.RowDefinitions>
+					<TextBlock Text="Chicago Train Tracker"
+										 Foreground="White"
+										 Padding="13,0,0,0"
+										 FontFamily="Arial"
+										 FontSize="32"
+										 VerticalAlignment="Center"/>
 
+					<Button x:Name="btnMinimize"
+									BorderThickness="0"
+									Content="-"
+									Foreground="White"
+									FontSize="24"
+									Cursor="Hand"
+									Grid.Column="1"
+									Click="btnMinimize_Click">
 
-			<TextBlock Text="Chicago Train Tracker" 
-						 FontSize="32"
-						 Grid.Column="0"
-						 Grid.Row="0"
-						 Grid.ColumnSpan="2"
-						 HorizontalAlignment="Center"
-						 VerticalAlignment="Center"
-						 />
+						<Button.Style>
+							<Style TargetType="Button">
+								<Setter Property="Background" Value="#522398" />
+								<Style.Triggers>
+									<Trigger Property="IsMouseOver" Value="True">
+										<Setter Property="Background" Value="#99238D" />
+									</Trigger>
+								</Style.Triggers>
+							</Style>
+						</Button.Style>
 
-			<view:MapView Grid.Column="0"
-								    Grid.Row="1"
-								    ClipToBounds="True"
-										Padding="5"/>
+						<Button.Template>
+							<ControlTemplate TargetType="Button">
+								<Border Width="24"
+												Height="24"
+												CornerRadius="12"
+												Background="{TemplateBinding Background}"
+												>
+									<ContentPresenter Margin="7,-7,0,0" />
+								</Border>
+							</ControlTemplate>
+						</Button.Template>
+					</Button>
 
-			<view:StationView Grid.Column="1"
-												Grid.Row="1"
-												Padding="5"/>
+					<Button x:Name="btnClose"
+									BorderThickness="0"
+									Content="X"
+									Foreground="White"
+									FontSize="14"
+									FontWeight="Bold"
+									Cursor="Hand"
+									Grid.Column="2"
+									Click="btnClose_Click">
 
-		</Grid>
-	
+						<Button.Style>
+							<Style TargetType="Button">
+								<Setter Property="Background" Value="#c60c30" />
+								<Style.Triggers>
+									<Trigger Property="IsMouseOver" Value="True">
+										<Setter Property="Background" Value="#C7420C" />
+									</Trigger>
+								</Style.Triggers>
+							</Style>
+						</Button.Style>
+
+						<Button.Template>
+							<ControlTemplate TargetType="Button">
+								<Border Width="24"
+												Height="24"
+												CornerRadius="12"
+												Background="{TemplateBinding Background}"
+												>
+									<ContentPresenter VerticalAlignment="Center"
+																		HorizontalAlignment="Center"
+																		/>
+								</Border>
+							</ControlTemplate>
+						</Button.Template>
+
+					</Button>
+				</Grid>
+				<Grid Grid.Row="1">
+					
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition />
+						<ColumnDefinition />
+					</Grid.ColumnDefinitions>
+					
+					<view:MapView Grid.Column="0" 
+												Padding="10"
+												Width="496"
+												Height="742"/>
+
+					<view:StationView Grid.Column="1"
+														Padding="10"/>
+				</Grid>
+			</Grid>
+
+		</Border>
+		
 	</Border>
 	
 </Window>
