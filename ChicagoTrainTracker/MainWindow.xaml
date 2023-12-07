@@ -14,6 +14,7 @@
 				Background="Transparent"
 				AllowsTransparency="True"
 				MouseDown="Window_MouseDown">
+	
 	<Border CornerRadius="14"
 					Background="#00a1de"
 					>
@@ -121,10 +122,12 @@
 					<view:MapView Grid.Column="0" 
 												Padding="10"
 												Width="496"
-												Height="742"/>
+												Height="742"
+												DataContext="{Binding MapViewModel}"/>
 
 					<view:StationView Grid.Column="1"
-														Padding="10"/>
+														Padding="10"
+														DataContext="{Binding StationViewViewModel}"/>
 				</Grid>
 			</Grid>
 

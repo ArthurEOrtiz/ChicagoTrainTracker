@@ -1,4 +1,4 @@
-﻿using System;
+﻿using ChicagoTrainTracker.View;
 
 namespace ChicagoTrainTracker.ViewModel
 {
@@ -7,9 +7,9 @@ namespace ChicagoTrainTracker.ViewModel
 		public StationViewViewModel StationViewViewModel { get; }
 		public MapViewModel MapViewModel { get; }
 
-		public MainWindowViewModel(StationViewViewModel stationViewModel, MapViewModel mapViewModel)
+		public MainWindowViewModel(StationViewViewModel stationViewViewModel, MapViewModel mapViewModel)
 		{
-			StationViewViewModel = stationViewModel;
+			StationViewViewModel = stationViewViewModel;
 			MapViewModel = mapViewModel;
 		}
 	}
