@@ -1,4 +1,5 @@
 ﻿using ChicagoTrainTracker.ViewModel;
+using Microsoft.Extensions.DependencyInjection;
 using System.Windows;
 
 namespace ChicagoTrainTracker
@@ -8,12 +9,18 @@ namespace ChicagoTrainTracker
 	/// </summary>
 	public partial class App : Application
 	{
+	
 		protected override void OnStartup(StartupEventArgs e)
 		{
-			var stationViewViewModel = new StationViewViewModel();
-			var mapViewModel = new MapViewModel();
+			var services = new ServiceCollection();
 
-			var mainWindowViewModel = new MainWindowViewModel(stationViewViewModel, mapViewModel);
+			services.AddSingleton<StationViewViewModel>();
+			services.AddSingleton<MapViewModel>();
+			services.AddSingleton<MainWindowViewModel>(provider => new MainWindowViewModel(provider.GetRequiredService<StationViewViewModel>(), provider.GetRequiredService<MapViewModel>()));
+
+			var serviceProvider = services.BuildServiceProvider();
+
+			var mainWindowViewModel = serviceProvider.GetRequiredService<MainWindowViewModel>();
 
 			MainWindow = new MainWindow()
 			{

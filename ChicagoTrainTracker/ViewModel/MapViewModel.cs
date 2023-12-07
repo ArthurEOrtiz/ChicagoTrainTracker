@@ -38,12 +38,10 @@ namespace ChicagoTrainTracker.ViewModel
 		public MapViewModel()
 		{
 			BingMapsApiKey = new ApplicationIdCredentialsProvider(ConfigurationManager.AppSettings["BingMapsApiKey"]);
-
 			Pushpins = new ObservableCollection<Pushpin>();
 			_stops = new ObservableCollection<StopViewModel>();
 			_stations = new ObservableCollection<StationViewModel>();
 			LoadStopData();
-
 		}
 
 		private async void LoadStopData()
